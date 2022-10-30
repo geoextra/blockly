@@ -54,8 +54,7 @@ export function inject(
   // Verify that the container is in document.
   // AnyDuringMigration because:  Argument of type 'string | Element' is not
   // assignable to parameter of type 'Node'.
-  if (!container ||
-      !dom.containsNode(document, container as AnyDuringMigration)) {
+  if (!container) {
     throw Error('Error: container is not in current document.');
   }
   const options = new Options(opt_options || {} as BlocklyOptions);
@@ -111,7 +110,7 @@ function createDom(container: Element, options: Options): Element {
   container.setAttribute('dir', 'LTR');
 
   // Load CSS.
-  Css.inject(options.hasCss, options.pathToMedia);
+  // Css.inject(options.hasCss, options.pathToMedia);
 
   // Build the SVG DOM.
   /*
